@@ -44,8 +44,6 @@ d<!DOCTYPE html>
 		  <li role="tab"><a href="#buyertxid" data-toggle="tab">Step 3 - Merchant</a></li>
 		  <li role="tab"><a href="#merchantprivatekey" data-toggle="tab">Step 4 - Customer</a></li>
 		  <li role="tab"><a href="#buyerbroadcast" data-toggle="tab">Address Generator</a></li>
-		  <li role="tab"><a href="#merchantbroadcast" data-toggle="tab">Refund - Merchant</a></li>
-		  <li role="tab"><a href="#merchantrefund" data-toggle="tab">Refund - Customer</a></li>
 		</ul>
 	</div>
 	<div class="container">
@@ -84,32 +82,34 @@ d<!DOCTYPE html>
 					<p>A customer should start here to begin a purchase.  Enter the merchant's 2crow address in the first field.  Enter an empty bitcoin address for which you have the private key in the second field.  When you press submit, a 2crow escrow address will be created.  You need to send this address on to the merchant.  You can now fund this address with your bitcoin wallet.</p>
 				</div>
 
-				<form class="form-horizontal multisigform">
-				  <div class="form-group">
-				    <label for="step2code" class="col-sm-2 col-sm-offset-2 control-label">Code :</label>
-				    <div class="col-sm-6">
-				      <input type="text" class="form-control" id="step2code" placeholder="Merchant's 2Crow Code">
-				    </div>
-				  </div>
-				  <div class="form-group">
-				    <label for="customer2address" class="col-sm-2 col-sm-offset-2 control-label">Address :</label>
-				    <div class="col-sm-6">
-				      <input type="text" class="form-control" id="customer2address" placeholder="Customer's Temporary Bitcoin Address">
-				    </div>
-				  </div>
-				  <div class="form-group">
-				    <div class="col-sm-offset-4 col-sm-8">
-				      <button type="submit" class="btn btn-success">Submit</button>
-				    </div>
-				  </div>
-				</form>
+				<div class="col-sm-8 col-sm-offset-2 merchanttransaction">
+				    <div class="input-group">
+				      <input type="text" class="form-control" placeholder="Place your redeemscript here.">
+				      <span class="input-group-btn">
+				        <button class="btn btn-default" type="button">Submit</button>
+				      </span>
+				    </div><!-- /input-group -->
+			    </div><!-- /.col-sm-8 -->
+			    <div class="col-sm-8 col-sm-offset-2 merchantinput">
+				    <form class="form-inline">
+					  <div class="form-group">
+					    <label for="exampleInputName2">Address</label>
+					    <input type="text" class="form-control" id="exampleInputName2" placeholder="Ex. 1diofier7rkldfuowerjk345h">
+					  </div>
+					  <div class="form-group">
+					    <label for="exampleInputEmail2">Amount</label>
+					    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="0.01">
+					  </div>
+					  <button type="submit" class="btn btn-success">Submit</button>
+					</form>
+				</div>
 			</div>
 			<!--========endmerchanttransaction=======================-->
 			<!--========buyertransaction=======================-->
 			<div class="tab-pane" id="buyertxid">
 				<h3 class="topheadline">Merchant - Ship and Prepare Transaction for Finalizing </h3>
 				<div class="container textexplain">
-					<p>At this point the merchant should have received the escrow address and verified that it is funded using a block explorer.  Now you need to say where you want the money to wind up.  Paste the 2crow step 2 code received from the customer in the first field, your private key from step 1 in the second field, and the final receiving bitcoin address in the third field.  Send the resulting code to the customer, with the goods or separately.  </p>
+					<p>At this point the merchant should have received the escrow address and verified that it is funded.  Now you just need to say where you want the money to wind up.  Paste the 2crow step 2 code received from the customer in the first field, your private key from step 1 in the second field, and the final receiving bitcoin address in the third field.  Send the resulting code to the customer, with the goods or separately.  </p>
 				</div>
 				<div class="col-sm-8 col-sm-offset-2 buyertransaction">
 				    <div class="input-group">
@@ -133,7 +133,7 @@ d<!DOCTYPE html>
 			<div class="tab-pane" id="merchantprivatekey">
 				<h3 class="topheadline">Customer - Finalize Transaction</h3>
 				<div class="container textexplain">
-					<p>To finalize the transaction and release the funds to the merchant.  In the first field place the 2crow code sent by the merchant.  In the second field place your private key saved from bitcoin address used in step 2. </p>
+					<p>To finalize the transaction and release the funds to the merchant.  In the first field place the 2crow code sent by the merchant.  In the second field place your private key saved from step 2. </p>
 				</div>
 				<div class="col-sm-8 col-sm-offset-2 merchantprivatekey">
 				    <div class="input-group">

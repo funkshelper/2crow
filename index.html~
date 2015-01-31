@@ -109,7 +109,7 @@ d<!DOCTYPE html>
 			<div class="tab-pane" id="buyertxid">
 				<h3 class="topheadline">Merchant - Ship and Prepare Transaction for Finalizing </h3>
 				<div class="container textexplain">
-					<p>At this point the merchant should have received the escrow address and verified that it is funded using a block explorer.  Now you need to say where you want the money to wind up.  Paste the 2crow step 2 code received from the customer in the first field, your private key from step 1 in the second field, and the final receiving bitcoin address in the third field.  Send the resulting code to the customer, with the goods or separately.  </p>
+					<p>At this point the merchant should have received the escrow address and verified that it is funded.  Now you just need to say where you want the money to wind up.  Paste the 2crow step 2 code received from the customer in the first field, your private key from step 1 in the second field, and the final receiving bitcoin address in the third field.  Send the resulting code to the customer, with the goods or separately.  </p>
 				</div>
 				<div class="col-sm-8 col-sm-offset-2 buyertransaction">
 				    <div class="input-group">
@@ -133,7 +133,7 @@ d<!DOCTYPE html>
 			<div class="tab-pane" id="merchantprivatekey">
 				<h3 class="topheadline">Customer - Finalize Transaction</h3>
 				<div class="container textexplain">
-					<p>To finalize the transaction and release the funds to the merchant.  In the first field place the 2crow code sent by the merchant.  In the second field place your private key saved from bitcoin address used in step 2. </p>
+					<p>To finalize the transaction and release the funds to the merchant.  In the first field place the 2crow code sent by the merchant.  In the second field place your private key saved from step 2. </p>
 				</div>
 				<div class="col-sm-8 col-sm-offset-2 merchantprivatekey">
 				    <div class="input-group">
