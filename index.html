@@ -30,28 +30,28 @@ d<!DOCTYPE html>
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav navbar-right">
-		        <li><a href="#newadd" data-toggle="tab">How it Works</a></li>
-		        <li><a href="#multisig" data-toggle="tab">FAQ</a></li>
-		        <li><a href="#openwallet" data-toggle="tab">Versions</a></li>
+		        <li><a href="#howitworks" data-toggle="tab">How it Works</a></li>
+		        <li><a href="#faq" data-toggle="tab">FAQ</a></li>
+		        <li><a href="#versions" data-toggle="tab">Versions</a></li>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
 		</nav>
 	<div class="container">
 		<ul class="nav nav-tabs tab-pane">
-		  <li role="tab" class="active"><a href="#multisig" data-toggle="tab">Step 1 - Merchant</a></li>
-		  <li role="tab"><a href="#merchanttransaction" data-toggle="tab">Step 2 - Customer</a></li>
-		  <li role="tab"><a href="#buyertxid" data-toggle="tab">Step 3 - Merchant</a></li>
-		  <li role="tab"><a href="#merchantprivatekey" data-toggle="tab">Step 4 - Customer</a></li>
-		  <li role="tab"><a href="#buyerbroadcast" data-toggle="tab">Address Generator</a></li>
+		  <li role="tab" class="active"><a href="#step1" data-toggle="tab">Step 1 - Merchant</a></li>
+		  <li role="tab"><a href="#step2" data-toggle="tab">Step 2 - Customer</a></li>
+		  <li role="tab"><a href="#step3" data-toggle="tab">Step 3 - Merchant</a></li>
+		  <li role="tab"><a href="#step4" data-toggle="tab">Step 4 - Customer</a></li>
+		  <li role="tab"><a href="#addressgenerator" data-toggle="tab">Address Generator</a></li>
 		  <li role="tab"><a href="#merchantbroadcast" data-toggle="tab">Refund - Merchant</a></li>
 		  <li role="tab"><a href="#merchantrefund" data-toggle="tab">Refund - Customer</a></li>
 		</ul>
 	</div>
 	<div class="container">
 		<div class="tab-content">
-			<!--========multisig=======================-->
-			<div class="tab-pane active" id="multisig">
+			<!--=======step1=======================-->
+			<div class="tab-pane active" id="step1">
 				<h3 class="topheadline">Merchant - Create Escrow Address - Initiate Transaction</h3>
 				<div class="container textexplain">
 					<p>A Merchant should use this tab to generate a 2Crow address that customers can use to initiate a purchase.  Paste an empty temporary bitcoin address below for which you have the private key.  When you press submit, a code will be generated which you can place on your website or send to your customer.</p>
@@ -77,11 +77,11 @@ d<!DOCTYPE html>
 				</form>
 			</div>
 			<!--========endmultisig=======================-->
-			<!--========merchanttransaction=======================-->
-			<div class="tab-pane" id="merchanttransaction">
+			<!--========step2=======================-->
+			<div class="tab-pane" id="step2">
 				<h3 class="topheadline">Customer - Begin a Purchase</h3>
 				<div class="container textexplain">
-					<p>A customer should start here to begin a purchase.  Enter the merchant's 2crow address in the first field.  Enter an empty bitcoin address for which you have the private key in the second field.  When you press submit, a 2crow escrow address will be created.  You need to send this address on to the merchant.  You can now fund this address with your bitcoin wallet.</p>
+					<p>A customer should start here to begin a purchase.  Enter the merchant's 2crow address in the first field.  Enter an empty bitcoin address for which you have the private key in the second field.  When you press submit, a 2crow escrow address will be created.  You need to send this address on to the merchant.  You can now fund this address.</p>
 				</div>
 
 				<form class="form-horizontal multisigform">
@@ -106,64 +106,70 @@ d<!DOCTYPE html>
 			</div>
 			<!--========endmerchanttransaction=======================-->
 			<!--========buyertransaction=======================-->
-			<div class="tab-pane" id="buyertxid">
+			<div class="tab-pane" id="step3">
 				<h3 class="topheadline">Merchant - Ship and Prepare Transaction for Finalizing </h3>
 				<div class="container textexplain">
 					<p>At this point the merchant should have received the escrow address and verified that it is funded using a block explorer.  Now you need to say where you want the money to wind up.  Paste the 2crow step 2 code received from the customer in the first field, your private key from step 1 in the second field, and the final receiving bitcoin address in the third field.  Send the resulting code to the customer, with the goods or separately.  </p>
 				</div>
-				<div class="col-sm-8 col-sm-offset-2 buyertransaction">
-				    <div class="input-group">
-				      <input type="text" class="form-control" placeholder="Place your redeemscript here.">
-				      <span class="input-group-btn">
-				        <button class="btn btn-default" type="button">Submit</button>
-				      </span>
-				    </div><!-- /input-group -->
-			    </div><!-- /.col-sm-8 -->
-			    <div class="col-sm-8 col-sm-offset-2 buyertransaction1">
-				    <div class="input-group">
-				      <input type="text" class="form-control" placeholder="Place your transaction ID here.">
-				      <span class="input-group-btn">
-				        <button class="btn btn-success" type="button">Submit</button>
-				      </span>
-				    </div><!-- /input-group -->
-			    </div><!-- /.col-sm-8 -->
+				<form class="form-horizontal multisigform">
+				  <div class="form-group">
+				    <label for="inputEmail3" class="col-sm-2 col-sm-offset-2 control-label">Code :</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="inputEmail3" placeholder="Enter 2Crow Code">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputPassword3" class="col-sm-2 col-sm-offset-2 control-label">Key :</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="inputPassword3" placeholder="Enter Private Key">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputPassword4" class="col-sm-2 col-sm-offset-2 control-label">Address :</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="inputPassword3" placeholder="Enter Final Bitcoin Address">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <div class="col-sm-offset-4 col-sm-8">
+				      <button type="submit" class="btn btn-success">Submit</button>
+				    </div>
+				  </div>
+				</form>
 			</div>
 			<!--========endbuyertransaction=======================-->
 			<!--========merchantprivatekey=======================-->
-			<div class="tab-pane" id="merchantprivatekey">
+			<div class="tab-pane" id="step4">
 				<h3 class="topheadline">Customer - Finalize Transaction</h3>
 				<div class="container textexplain">
 					<p>To finalize the transaction and release the funds to the merchant.  In the first field place the 2crow code sent by the merchant.  In the second field place your private key saved from bitcoin address used in step 2. </p>
 				</div>
-				<div class="col-sm-8 col-sm-offset-2 merchantprivatekey">
-				    <div class="input-group">
-				      <input type="text" class="form-control" placeholder="Place your privatekey here.">
-				      <span class="input-group-btn">
-				        <button class="btn btn-default" type="button">Submit</button>
-				      </span>
-				    </div><!-- /input-group -->
-			    </div><!-- /.col-sm-8 -->
-			    <div class="col-sm-8 col-sm-offset-2 merchantsign">
-				    <form class="form-horizontal">
-					  <div class="form-group">
-					    <div class="col-sm-12">
-					      <textarea class="form-control" rows="3" placeholder="Sign your transaction here."></textarea>
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <div class="col-sm-10">
-					      <button type="submit" class="btn btn-success">Sign</button>
-					    </div>
-					  </div>
-					</form>
-				</div>
+				<form class="form-horizontal multisigform">
+				  <div class="form-group">
+				    <label for="inputEmail3" class="col-sm-2 col-sm-offset-2 control-label">Code :</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="inputEmail3" placeholder="2crow Code">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputPassword3" class="col-sm-2 col-sm-offset-2 control-label">Key :</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="inputPassword3" placeholder="Escrow Private Key">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <div class="col-sm-offset-4 col-sm-8">
+				      <button type="submit" class="btn btn-success">Submit</button>
+				    </div>
+				  </div>
+				</form>
 			</div>
 			<!--========endmerchantprivatekey=======================-->
 			<!--========buyerprivatekey=======================-->
 			<div class="tab-pane" id="buyerprivatekey">
 				<h3 class="topheadline">Sign buyers transaction</h3>
 				<div class="container textexplain">
-					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+					<p>Use this to initiate a refund if the funds are still in escrow.  If the funds are moved out of escrow already, refunds can be handled with direct transactions.  Merchant enters here the 2crow code and their escrow private key.</p>
 				</div>
 				<div class="col-sm-8 col-sm-offset-2 merchantprivatekey">
 				    <div class="input-group">
@@ -212,7 +218,7 @@ d<!DOCTYPE html>
 			</div>
 			<!--========endmerchantbroadcast=======================-->
 			<!--========buyerbroadcast=======================-->
-			<div class="tab-pane" id="buyerbroadcast">
+			<div class="tab-pane" id="addressgenerator">
 				<h3 class="topheadline">Address Generator</h3>
 				<div class="container textexplain">
 					<p>If you need a new bitcoin address keypair, use this form.  Click "Generate" and a private key and bitcoin address will be generated which could be used by the merchant or customer when needed.  </p>
@@ -221,18 +227,44 @@ d<!DOCTYPE html>
 				    <form class="form-horizontal">
 					  <div class="form-group">
 					    <div class="col-sm-12">
-					      <textarea class="form-control" rows="3" placeholder="Broadcast your transaction here."></textarea>
+					      <textarea class="form-control" rows="3" placeholder="New keypair will appear here."></textarea>
 					    </div>
 					  </div>
 					  <div class="form-group">
 					    <div class="col-sm-10">
-					      <button type="submit" class="btn btn-success">broadcast</button>
+					      <button type="submit" class="btn btn-success">generate</button>
 					    </div>
 					  </div>
 					</form>
 				</div>
 			</div>
 			<!--========endbuyerbroadcast=======================-->
+			<!--========HowItWorks=======================-->
+			<div class="tab-pane" id="howitworks">
+				<h3 class="topheadline">How It Works</h3>
+				<div class="container textexplain">
+					<p>This site is completely client side, it will also run on an offline computer </p>
+<p>An escrow account is created that is controlled by both the buyer and the seller.</p>
+<p>The buyer is unable to take the funds until the customer finalizes the transaction.</p>
+
+
+</p>
+				
+			</div>
+			<!--========endHowItWorks=======================-->
+			<!--========FAQ=======================-->
+			<div class="tab-pane" id="faq">
+				<h3 class="topheadline">Frequently Asked Questions</h3>
+				<div class="container textexplain">
+					<p>1) Does this site save any information? </p>
+<p>2) What happens if the merchant never ships the goods?</p>
+<p>3) What happens if the customer never finalizes?</p>
+<p>4) </p>
+
+</p>
+				
+			</div>
+			<!--========endFAQ=======================-->
 
 		</div>
 	</div>
