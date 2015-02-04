@@ -12,6 +12,7 @@ d<!DOCTYPE html>
 
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/2crow.js"></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-default navbar-static-top">
@@ -71,7 +72,15 @@ d<!DOCTYPE html>
 				  </div>
 				  <div class="form-group">
 				    <div class="col-sm-offset-4 col-sm-8">
-				      <button type="submit" class="btn btn-success">Submit</button>
+				      <button type="submit" class="btn btn-success" id="merchantAddress">Submit</button>
+				    </div>
+				  </div>
+				</form>
+				<form class="form-horizontal alert alert-success">
+				  <div class="form-group">
+				    <div class="col-sm-12">
+				      <p>Share this 2crow code with your customer.</p>
+				      <textarea class="form-control" rows="3" id="privkeyandaddress" readonly></textarea>
 				    </div>
 				  </div>
 				</form>
@@ -99,7 +108,15 @@ d<!DOCTYPE html>
 				  </div>
 				  <div class="form-group">
 				    <div class="col-sm-offset-4 col-sm-8">
-				      <button type="submit" class="btn btn-success">Submit</button>
+				      <button type="submit" class="btn btn-success" id="customerbegin">Submit</button>
+				    </div>
+				  </div>
+				</form>
+				<form class="form-horizontal alert alert-success">
+				  <div class="form-group">
+				    <div class="col-sm-12">
+				      <p>Fund this address and share it with the merchant.</p>
+				      <textarea class="form-control" rows="3" id="privkeyandaddress" readonly></textarea>
 				    </div>
 				  </div>
 				</form>
@@ -133,6 +150,14 @@ d<!DOCTYPE html>
 				  <div class="form-group">
 				    <div class="col-sm-offset-4 col-sm-8">
 				      <button type="submit" class="btn btn-success">Submit</button>
+				    </div>
+				  </div>
+				</form>
+				<form class="form-horizontal alert alert-success">
+				  <div class="form-group">
+				    <div class="col-sm-12">
+				      <p>Send this code to the merchant along with the product.</p>
+				      <textarea class="form-control" rows="3" id="privkeyandaddress" readonly></textarea>
 				    </div>
 				  </div>
 				</form>
@@ -227,12 +252,13 @@ d<!DOCTYPE html>
 				    <form class="form-horizontal">
 					  <div class="form-group">
 					    <div class="col-sm-12">
-					      <textarea class="form-control" rows="3" placeholder="New keypair will appear here."></textarea>
+					      <p>New keypair will appear in the textarea.</p>
+					      <textarea class="form-control" rows="3" id="privkeyandaddress" readonly></textarea>
 					    </div>
 					  </div>
 					  <div class="form-group">
 					    <div class="col-sm-10">
-					      <button type="submit" class="btn btn-success">generate</button>
+					      <button type="submit" class="btn btn-success" id="genarateKeypair">generate</button>
 					    </div>
 					  </div>
 					</form>
