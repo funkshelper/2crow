@@ -57,7 +57,7 @@
 				<div class="container textexplain">
 					<p>A Merchant should use this tab to generate a 2Crow address that customers can use to initiate a purchase.  Paste an empty temporary bitcoin address below for which you have the private key.  When you press submit, a code will be generated which you can place on your website or send to your customer.</p>
 				</div>
-				<form class="form-horizontal multisigform">
+				<div class="form-horizontal multisigform">
 				  <div class="form-group">
 				    <label for="inputEmail3" class="col-sm-2 col-sm-offset-2 control-label">Merchant :</label>
 				    <div class="col-sm-6"  id="merchantBTCAdd">
@@ -76,15 +76,15 @@
 				      <button type="submit" class="btn btn-success" id="merchantAddress">Submit</button>
 				    </div>
 				  </div>
-				</form>
-				<form class="form-horizontal alert alert-success">
+				</div>
+				<div class="form-horizontal alert alert-success hidden" id="multisigPopup">
 				  <div class="form-group">
 				    <div class="col-sm-12">
 				      <p>Share this 2crow code with your customer.</p>
-				      <textarea class="form-control" rows="3" id="privkeyandaddress" readonly></textarea>
+				      <input type="textarea" class="form-control" rows="3" id="privkeyandaddress" readonly></textarea>
 				    </div>
 				  </div>
-				</form>
+				</div>
 			</div>
 			<!--========endmultisig=======================-->
 			<!--========step2=======================-->

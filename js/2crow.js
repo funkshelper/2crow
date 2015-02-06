@@ -26,6 +26,8 @@ $(function() {
 			$('#merchantBTCAdd').removeClass('has-error');
 			$('#amount').removeClass('has-error');
 			$("#multiSigErrorMsg").css("display", "none");
+			
+			$("#multisigPopup").removeClass("hidden").show();
 		}
 	});
 
