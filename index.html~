@@ -12,8 +12,21 @@
 
 		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
                 -->
+
+		<script type="text/javascript" src="js/crypto-min.js"></script>
+		<script type="text/javascript" src="js/crypto-sha256.js"></script>
+		<script type="text/javascript" src="js/crypto-sha256-hmac.js"></script>
+		<script type="text/javascript" src="js/ripemd160.js"></script>
+		<script type="text/javascript" src="js/aes.js"></script>
+
+		<script type="text/javascript" src="js/qrcode.js"></script>
+		<script type="text/javascript" src="js/jsbn.js"></script>
+		<script type="text/javascript" src="js/ellipticcurve.js"></script>
+
+                <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/2crow.js"></script>
+		<script type="text/javascript" src="js/coin.js"></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-default navbar-static-top">
@@ -60,7 +73,7 @@
 				</div>
 				<div class="form-horizontal multisigform">
 				  <div class="form-group">
-				    <label for="inputEmail3" class="col-sm-2 col-sm-offset-2 control-label">Merchant :</label>
+				    <label for="inputEmail3" class="col-sm-2 col-sm-offset-2 control-label">Public Key :</label>
 				    <div class="col-sm-6"  id="merchantBTCAdd">
 				      <input type="text" class="form-control" id="inputMerchantBTCAdd" placeholder="Escrow Public Key">
 				    </div>
@@ -68,7 +81,7 @@
 				  <div class="form-group">
 				    <label for="inputPassword3" class="col-sm-2 col-sm-offset-2 control-label">Amount :</label>
 				    <div class="col-sm-6" id="amount">
-				      <input type="text" class="form-control" id="inputAmount" placeholder="Amount (payment + deposit) ">
+				      <input type="text" class="form-control" id="inputAmount" placeholder="Escrow Amount (payment + deposit)">
 				    </div>
 				  </div>
 				  <div id="multiSigErrorMsg" class="alert alert-danger" style="display:none;"></div>
@@ -82,7 +95,7 @@
 				  <div class="form-group">
 				    <div class="col-sm-12">
 				      <p>Share this 2crow code with your customer.</p>
-				      <input type="textarea" class="form-control" rows="3" id="privkeyandaddress" readonly></textarea>
+				      <input type="textarea" class="form-control answer" rows="3" id="privkeyandaddress" readonly></textarea>
 				    </div>
 				  </div>
 				</div>
@@ -92,7 +105,7 @@
 			<div class="tab-pane" id="step2">
 				<h3 class="topheadline">Customer - Begin a Purchase</h3>
 				<div class="container textexplain">
-					<p>A customer should start here to begin a purchase.  Enter the merchant's 2crow address in the first field.  Enter an empty bitcoin address for which you have the private key in the second field.  When you press submit, a 2crow escrow address will be created.  You need to send this address on to the merchant.  You can now fund this address.</p>
+					<p>A customer should start here to begin a purchase.  Enter the merchant's 2crow code in the first field.  Enter a new public key for which you have the private key in the second field.  When you press submit, a 2crow escrow address will be created.  You need to send this address on to the merchant.  You can now fund this address.</p>
 				</div>
 
 				<form class="form-horizontal multisigform">
@@ -103,14 +116,14 @@
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <label for="customer2address" class="col-sm-2 col-sm-offset-2 control-label">Address :</label>
+				    <label for="customer2address" class="col-sm-2 col-sm-offset-2 control-label">Public Key :</label>
 				    <div class="col-sm-6">
-				      <input type="text" class="form-control" id="customer2address" placeholder="Customer's Temporary Bitcoin Address">
+				      <input type="text" class="form-control" id="customer2pubkey" placeholder="Customer's Escrow Public Key">
 				    </div>
 				  </div>
 				  <div class="form-group">
 				    <div class="col-sm-offset-4 col-sm-8">
-				      <button type="submit" class="btn btn-success" id="customerbegin">Submit</button>
+				      <button type="button" class="btn btn-success" id="customerbegin">Submit</button>
 				    </div>
 				  </div>
 				</form>
@@ -151,7 +164,7 @@
 				  </div>
 				  <div class="form-group">
 				    <div class="col-sm-offset-4 col-sm-8">
-				      <button type="submit" class="btn btn-success">Submit</button>
+				      <button type="submit" class="btn btn-success" id="step3submit">Submit</button>
 				    </div>
 				  </div>
 				</form>
@@ -189,7 +202,7 @@
 				  </div>
 				  <div class="form-group">
 				    <div class="col-sm-offset-4 col-sm-8">
-				      <button type="submit" class="btn btn-success">Submit</button>
+				      <button type="submit" class="btn btn-success" id= "step4submit">Submit</button>
 				    </div>
 				  </div>
 				</form>
@@ -208,7 +221,7 @@
 				    <div class="input-group">
 				      <input type="text" class="form-control" placeholder="Place your privatekey here.">
 				      <span class="input-group-btn">
-				        <button class="btn btn-default" type="button">Submit</button>
+				        <button class="btn btn-default" type="button" id="refund1">Submit</button>
 				      </span>
 				    </div><!-- /input-group -->
 			    </div><!-- /.col-sm-8 -->

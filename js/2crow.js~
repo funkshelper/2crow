@@ -65,7 +65,6 @@ $(function() {
 			//coinjs.pubkeys2MultisigAddress = function(pubkeys, required) {
 			var pubkeys = [coinjs.pubkeydecompress(customer2pubkey),codeArray[2]];			
 			var tbr = coinjs.pubkeys2MultisigAddress(pubkeys,2);
-			$("#step2output").html('Escrow address: '+ tbr.address);
 			alert(tbr.address);	
 		}
 	});

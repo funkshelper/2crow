@@ -612,10 +612,9 @@
 		}
 
 		/* list unspent transactions */
-/*		r.listUnspent = function(address, callback) {
+		r.listUnspent = function(address, callback) {
 			coinjs.ajax(coinjs.host+'?uid='+coinjs.uid+'&key='+coinjs.key+'&setmodule=addresses&request=unspent&address='+address+'&r='+Math.random(), callback, "GET");
 		}
-*/
 
 		/* add unspent to transaction */
 		r.addUnspent = function(address, callback){
