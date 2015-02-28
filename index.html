@@ -58,9 +58,11 @@
 		  <li role="tab"><a href="#step2" data-toggle="tab">Step 2 - Customer</a></li>
 		  <li role="tab"><a href="#step3" data-toggle="tab">Step 3 - Merchant</a></li>
 		  <li role="tab"><a href="#step4" data-toggle="tab">Step 4 - Customer</a></li>
-		  <li role="tab"><a href="#addressgenerator" data-toggle="tab">Address Generator</a></li>
+		<!--  
+                   <li role="tab"><a href="#addressgenerator" data-toggle="tab">Address Generator</a></li>
 		  <li role="tab"><a href="#merchantbroadcast" data-toggle="tab">Refund - Merchant</a></li>
 		  <li role="tab"><a href="#merchantrefund" data-toggle="tab">Refund - Customer</a></li>
+		-->
 		</ul>
 	</div>
 	<div class="container">
@@ -105,18 +107,18 @@
 			<div class="tab-pane" id="step2">
 				<h3 class="topheadline">Customer - Begin a Purchase</h3>
 				<div class="container textexplain">
-					<p>A customer should start here to begin a purchase.  Enter the merchant's 2crow code in the first field.  Enter a new public key for which you have the private key in the second field.  When you press submit, a 2crow escrow address will be created.  You need to send this address on to the merchant.  You can now fund this address.</p>
+					<p>A customer should start here to begin a purchase.  Enter the merchant's 2crow code in the first field.  Enter a new public key for which you have the private key in the second field.  When you press submit, a 2crow escrow address will be created.  You need to send this information to the merchant.  You can now fund this address.</p>
 				</div>
 
 				<form class="form-horizontal multisigform">
 				  <div class="form-group">
-				    <label for="step2code" class="col-sm-2 col-sm-offset-2 control-label">Code :</label>
+				    <label for="step2code" class="col-sm-2 col-sm-offset-2 control-label">Merchants Code :</label>
 				    <div class="col-sm-6">
 				      <input type="text" class="form-control" id="step2code" placeholder="Merchant's 2Crow Code">
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <label for="customer2address" class="col-sm-2 col-sm-offset-2 control-label">Public Key :</label>
+				    <label for="customer2address" class="col-sm-2 col-sm-offset-2 control-label">Your Public Key :</label>
 				    <div class="col-sm-6">
 				      <input type="text" class="form-control" id="customer2pubkey" placeholder="Customer's Escrow Public Key">
 				    </div>
@@ -130,7 +132,7 @@
 				<form class="form-horizontal alert alert-success">
 				  <div class="form-group">
 				    <div class="col-sm-12">
-				      <p>Fund this address and share it with the merchant.</p>
+				      <p>Send payment to this address and then share this information with the merchant.</p>
 				      <textarea class="form-control" rows="3" id="step2output" readonly></textarea>
 				    </div>
 				  </div>
@@ -145,37 +147,46 @@
 				</div>
 				<form class="form-horizontal multisigform">
 				  <div class="form-group">
-				    <label for="inputEmail3" class="col-sm-2 col-sm-offset-2 control-label">Code :</label>
+				    <label for="inputEmail3" class="col-sm-2 col-sm-offset-2 control-label">TX ID :</label>
 				    <div class="col-sm-6">
-				      <input type="text" class="form-control" id="inputEmail3" placeholder="Enter 2Crow Code">
+				      <input type="text" class="form-control" id="txID" placeholder="Escrow payment TX ID">
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <label for="inputPassword3" class="col-sm-2 col-sm-offset-2 control-label">Key :</label>
+				    <label for="inputPassword5" class="col-sm-2 col-sm-offset-2 control-label">Code :</label>
 				    <div class="col-sm-6">
-				      <input type="text" class="form-control" id="inputPassword3" placeholder="Enter Private Key">
+				      <input type="text" class="form-control" id="step3code" placeholder="2crow code from customer">
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <label for="inputPassword4" class="col-sm-2 col-sm-offset-2 control-label">Address :</label>
+				    <label for="inputPassword6" class="col-sm-2 col-sm-offset-2 control-label">Address :</label>
 				    <div class="col-sm-6">
-				      <input type="text" class="form-control" id="inputPassword3" placeholder="Enter Final Bitcoin Address">
+				      <input type="text" class="form-control" id="finalAddress" placeholder="Final payment Address">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputPassword3" class="col-sm-2 col-sm-offset-2 control-label">Escrow PrivKey :</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="privKey" placeholder="Escrow Private Key">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputPassword3" class="col-sm-2 col-sm-offset-2 control-label">Amount :</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="step3amount" placeholder="Total minus miners fee">
 				    </div>
 				  </div>
 				  <div class="form-group">
 				    <div class="col-sm-offset-4 col-sm-8">
-				      <button type="submit" class="btn btn-success" id="step3submit">Submit</button>
+				      <button type="button" class="btn btn-success" id="step3submit">Submit</button>
 				    </div>
 				  </div>
 				</form>
-				<div class="alert alert-danger" role="alert">
-					<p><strong>!</strong> Wrong private key</p>
-				</div>
 				<form class="form-horizontal alert alert-success">
 				  <div class="form-group">
 				    <div class="col-sm-12">
-				      <p>Send this code to the customer along with the product.</p>
-				      <textarea class="form-control" rows="3" id="privkeyandaddress" readonly></textarea>
+				      <p>Send this code to the customer so they can finalize.</p>
+				      <textarea class="form-control" rows="3" id="step3result" readonly></textarea>
 				    </div>
 				  </div>
 				</form>
@@ -185,30 +196,35 @@
 			<div class="tab-pane" id="step4">
 				<h3 class="topheadline">Customer - Finalize Transaction</h3>
 				<div class="container textexplain">
-					<p>To finalize the transaction and release the funds to the merchant.  In the first field place the 2crow code sent by the merchant.  In the second field place your private key saved from bitcoin address used in step 2. </p>
+					<p>To finalize the transaction and release the funds to the merchant.  In the first field place the 2crow code sent by the merchant.  In the second field place your escrow key from step 2. </p>
 				</div>
 				<form class="form-horizontal multisigform">
 				  <div class="form-group">
 				    <label for="inputEmail3" class="col-sm-2 col-sm-offset-2 control-label">Code :</label>
 				    <div class="col-sm-6">
-				      <input type="text" class="form-control" id="inputEmail3" placeholder="2crow Code">
+				      <input type="text" class="form-control" id="step4code" placeholder="2crow Code">
 				    </div>
 				  </div>
 				  <div class="form-group">
 				    <label for="inputPassword3" class="col-sm-2 col-sm-offset-2 control-label">Key :</label>
 				    <div class="col-sm-6">
-				      <input type="text" class="form-control" id="inputPassword3" placeholder="Escrow Private Key">
+				      <input type="text" class="form-control" id="step4key" placeholder="Escrow Private Key">
 				    </div>
 				  </div>
 				  <div class="form-group">
 				    <div class="col-sm-offset-4 col-sm-8">
-				      <button type="submit" class="btn btn-success" id= "step4submit">Submit</button>
+				      <button type="button" class="btn btn-success" id= "step4submit">Submit</button>
 				    </div>
 				  </div>
 				</form>
-				<div class="alert alert-danger" role="alert">
-					<p><strong>!</strong> Wrong private key</p>
-				</div>
+				<form class="form-horizontal alert alert-success">
+				  <div class="form-group">
+				    <div class="col-sm-12">
+				      <p>Broadcast this transaction.</p>
+				      <textarea class="form-control" rows="3" id="step4result" readonly></textarea>
+				    </div>
+				  </div>
+				</form>
 			</div>
 			<!--========endmerchantprivatekey=======================-->
 			<!--========buyerprivatekey=======================-->

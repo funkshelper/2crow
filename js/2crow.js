@@ -35,7 +35,7 @@ $(function() {
 			$("#multiSigErrorMsg").css("display", "block");
 			var code1 = "2crow_1_";
 			code1=code1+merchantAdd+"_"+amount;
-			alert(coinjs.pubkeydecompress(merchantAdd));
+			//alert(coinjs.pubkeydecompress(merchantAdd));
 			$("#multiSigErrorMsg").html('Here is your step 1 code: '+ code1);
 		}else {
 			$('#merchantBTCAdd').removeClass('has-error');
@@ -60,22 +60,50 @@ $(function() {
 		}else if(coinjs.pubkeydecompress(customer2pubkey)) {		
 			//lets suppose we are ok to continue
 			var codeArray = step2code.split('_');
-			//alert(codeArray[2]);
+			//alert(codeArray[3]);
+			//alert(customer2pubkey);
 			//lets build the multisig address!
 			//coinjs.pubkeys2MultisigAddress = function(pubkeys, required) {
-			var pubkeys = [coinjs.pubkeydecompress(customer2pubkey),codeArray[2]];			
+			var pubkeys = [codeArray[2],customer2pubkey];			
 			var tbr = coinjs.pubkeys2MultisigAddress(pubkeys,2);
-			$("#step2output").html('Escrow address: '+ tbr.address);
-			alert(tbr.address);	
+			$("#step2output").html('Send '+codeArray[3]+ ' BTC to: '+ tbr.address + '\n2crow_2_'+ tbr.redeemScript);
+			//alert(tbr.address);	
 		}
 	});
 
-	$('#step3submit').click(function() {
-		alert("step 3");
+	$('#step3submit').click(function() {	
+		var tx = coinjs.transaction();
+		var txID = $('#txID').val();
+		var code = $('#step3code').val();
+		var address = $('#finalAddress').val();
+		var amount = $('#step3amount').val();
+		var privkey = $('#privKey').val();
+		var codeArray = code.split('_');
+		tx.addinput(txID, 0, codeArray[2]);
+		//alert("added input /n " + txID + "/n" + txScript + "/n"+ txN);
+		tx.addoutput(address, amount*1);
+		//alert("added output");
+		var rawtx = tx.serialize();
+		var tx2 = coinjs.transaction();
+		var t = tx2.deserialize(rawtx);
+		//alert("serialized");
+		//alert(rawtx);
+		var signed = t.sign(privkey)
+		//alert(signed);
+		$("#step3result").html('2crow_3_'+ signed);
 	});
 
 	$('#step4submit').click(function() {
-		alert("step 4");
+		var tx = coinjs.transaction();
+		var code = $('#step4code').val();
+		var privkey = $('#step4key').val();
+		var codeArray = code.split('_');
+		alert(codeArray[2]);
+		var t = tx.deserialize(codeArray[2]);
+		//alert("added input /n " + txID + "/n" + txScript + "/n"+ txN);
+		var signed = t.sign(privkey)
+		//alert(signed);
+		$("#step4result").html(signed);
 	});
 
 	$('#refund1').click(function() {
