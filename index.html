@@ -40,14 +40,17 @@
 		        <span class="icon-bar"></span>
 		      </button>
 		      <a class="navbar-brand" href="#home"><img src="images/logosmall.png"></a>
+			<span style="color:#ff0000"> BETA VERSION -- USE WITH CAUTION</span>
 		    </div>
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav navbar-right">
-		        <li><a href="#howitworks" data-toggle="tab">How it Works</a></li>
-		        <li><a href="#faq" data-toggle="tab">FAQ</a></li>
+		        <li><a href="#howitworks" data-toggle="tab">Instructions</a></li>
+		       <!--
+			<li><a href="#faq" data-toggle="tab">FAQ</a></li>
 		        <li><a href="#versions" data-toggle="tab">Versions</a></li>
+			-->
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
@@ -70,9 +73,11 @@
 			<!--=======step1=======================-->
 			<div class="tab-pane active" id="step1">
 				<h3 class="topheadline">Merchant - Create Escrow Address - Initiate Transaction</h3>
+				<!--				
 				<div class="container textexplain">
 					<p>A Merchant should use this tab to generate a 2Crow address that customers can use to initiate a purchase.  Paste an empty temporary bitcoin address below for which you have the private key.  When you press submit, a code will be generated which you can place on your website or send to your customer.</p>
 				</div>
+				-->
 				<div class="form-horizontal multisigform">
 				  <div class="form-group">
 				    <label for="inputEmail3" class="col-sm-2 col-sm-offset-2 control-label">Public Key :</label>
@@ -97,7 +102,8 @@
 				  <div class="form-group">
 				    <div class="col-sm-12">
 				      <p>Share this 2crow code with your customer.</p>
-				      <input type="textarea" class="form-control answer" rows="3" id="privkeyandaddress" readonly></textarea>
+				      <input type="textarea" class="form-control answer" rows="3" id="privkeyandaddress2" readonly>
+<!--</textarea>-->
 				    </div>
 				  </div>
 				</div>
@@ -106,20 +112,22 @@
 			<!--========step2=======================-->
 			<div class="tab-pane" id="step2">
 				<h3 class="topheadline">Customer - Begin a Purchase</h3>
+				<!--
 				<div class="container textexplain">
 					<p>A customer should start here to begin a purchase.  Enter the merchant's 2crow code in the first field.  Enter a new public key for which you have the private key in the second field.  When you press submit, a 2crow escrow address will be created.  You need to send this information to the merchant.  You can now fund this address.</p>
 				</div>
+				-->
 
 				<form class="form-horizontal multisigform">
 				  <div class="form-group">
-				    <label for="step2code" class="col-sm-2 col-sm-offset-2 control-label">Merchants Code :</label>
-				    <div class="col-sm-6">
+				    <label for="step2code" class="col-sm-2 col-sm-offset-2 control-label">Code :</label>
+				    <div class="col-sm-7">
 				      <input type="text" class="form-control" id="step2code" placeholder="Merchant's 2Crow Code">
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <label for="customer2address" class="col-sm-2 col-sm-offset-2 control-label">Your Public Key :</label>
-				    <div class="col-sm-6">
+				    <label for="customer2address" class="col-sm-2 col-sm-offset-2 control-label">Public Key :</label>
+				    <div class="col-sm-7">
 				      <input type="text" class="form-control" id="customer2pubkey" placeholder="Customer's Escrow Public Key">
 				    </div>
 				  </div>
@@ -141,10 +149,12 @@
 			<!--========endmerchanttransaction=======================-->
 			<!--========buyertransaction=======================-->
 			<div class="tab-pane" id="step3">
-				<h3 class="topheadline">Merchant - Ship and Prepare Transaction for Finalizing </h3>
+				<h3 class="topheadline">Merchant - Prepare Transaction for Finalizing </h3>
+				<!--
 				<div class="container textexplain">
 					<p>At this point the merchant should have received the escrow address and verified that it is funded using a block explorer.  Now you need to say where you want the money to wind up.  Paste the 2crow step 2 code received from the customer in the first field, your private key from step 1 in the second field, and the final receiving bitcoin address in the third field.  Send the resulting code to the customer, with the goods or separately.  </p>
 				</div>
+				-->
 				<form class="form-horizontal multisigform">
 				  <div class="form-group">
 				    <label for="inputEmail3" class="col-sm-2 col-sm-offset-2 control-label">TX ID :</label>
@@ -195,9 +205,11 @@
 			<!--========merchantprivatekey=======================-->
 			<div class="tab-pane" id="step4">
 				<h3 class="topheadline">Customer - Finalize Transaction</h3>
+				<!--				
 				<div class="container textexplain">
 					<p>To finalize the transaction and release the funds to the merchant.  In the first field place the 2crow code sent by the merchant.  In the second field place your escrow key from step 2. </p>
 				</div>
+				-->
 				<form class="form-horizontal multisigform">
 				  <div class="form-group">
 				    <label for="inputEmail3" class="col-sm-2 col-sm-offset-2 control-label">Code :</label>
@@ -220,7 +232,7 @@
 				<form class="form-horizontal alert alert-success">
 				  <div class="form-group">
 				    <div class="col-sm-12">
-				      <p>Broadcast this transaction.</p>
+				      <p>Broadcast this transaction (or send it to the Merchant to broadcast).</p>
 				      <textarea class="form-control" rows="3" id="step4result" readonly></textarea>
 				    </div>
 				  </div>
@@ -306,26 +318,60 @@
 			<div class="tab-pane" id="howitworks">
 				<h3 class="topheadline">How It Works</h3>
 				<div class="container textexplain">
-					<p>This site is completely client side, it will also run on an offline computer </p>
-<p>An escrow account is created that is controlled by both the buyer and the seller.</p>
-<p>The buyer is unable to take the funds until the customer finalizes the transaction.</p>
+					<p>This site is completely client side, it will also run on an offline computer. </p>
+<p>An escrow account is created that is controlled by both the buyer and the seller.  The merchant is unable to spend the funds until the customer finalizes the transaction.  2Crow contributors have zero control and zero liability for your use of this service.</p>
+<p>This project is currently 100% donation supported.  Please support it at 12crowDGkeHRaeiJES3PaZgsP9LQc4duwY </p>
 
 
-</p>
+
 				
 			</div>
 			<!--========endHowItWorks=======================-->
 			<!--========FAQ=======================-->
-			<div class="tab-pane" id="faq">
+			<div class="tab-pane" id="faq1">
+				<h3 class="topheadline">Instructions - Step 1</h3>
+				<div class="container textexplain">
+					<p>A Merchant should use this tab to generate a 2Crow address that customers can use to initiate a purchase.  Paste an empty address key below for which you have the private key.  When you press submit, a code will be generated which you can place on your website or send to your customer.  Important: don't lose the private key you used for this step until the entire transaction is complete or the funds will be lost.  </p>
+				</div>
+			</div>
+
+			<div class="tab-pane" id="faq2">
+				<h3 class="topheadline">Customer - Step 2</h3>
+				<div class="container textexplain">
+					<p> A customer should start here to begin a purchase.  Enter the merchant's 2crow code in the first field, it should begin "2crow_1_...".  Enter a new public key for which you have the private key in the second field.  When you press submit, a 2crow escrow address will be created.  You need to send this information to the merchant.  You can now fund this address.  Important: don't lose the private key used in this step until the entire transaction is finalized!  </p>
+				</div>				
+			</div>
+
+			<div class="tab-pane" id="faq3">
+				<h3 class="topheadline">Merchant - Step 3</h3>
+				<div class="container textexplain">
+					<p>At this point as the merchant you should have received the escrow address and verified that it is funded using a block explorer.  You can ship the goods, seeing that the customer has committed funds.  Now you need to say where you want the money to wind up.  Paste the TX ID which funded the escrow address in field 1.  Place the 2crow step 2 code received from the customer in the second field.  Place the final receiving bitcoin address in the third field.  Place your private key for the escrow from step 1 in the fourth field.  Finally in the last field, put the amount you wish to receive, that is the amount in escrow minus any miners fee.  Send the resulting code to the customer, either with the goods or separately, so they can finalize.  </p> <p> A hex transaction is generated here to move the funds, and one of two signatures added.  If you wish to verify the hex transaction you can decode it independently (e.g. using coinb.in or bitcoin-cli decoderawtransaction).  If you wish to do something more complex like move funds to multiple addresses, pay a deposit, you can create your own raw transaction and substitute it in this step.  </p>
+				</div>
+			</div>
+
+			<div class="tab-pane" id="faq4">
+				<h3 class="topheadline">Customer - Step 4</h3>
+				<div class="container textexplain">
+					<p>Finalize the transaction and release the funds to the merchant.  In the first field place the 2crow code sent by the merchant.  It should begin with 2crow_3_...  In the second field place your private escrow key from step 2.  A signed raw transaction will appear below.  Important: you need to publish this transaction to the network.  Copy it and paste it into a broadcast or push service such as https://coinb.in/#broadcast.    
+				</div>
+			</div>
+
+			<div class="tab-pane" id="faq5">
 				<h3 class="topheadline">Frequently Asked Questions</h3>
 				<div class="container textexplain">
-					<p>1) Does this site save any information? </p>
-<p>2) What happens if the merchant never ships the goods?</p>
-<p>3) What happens if the customer never finalizes?</p>
-<p>4) </p>
+					<p>1) Does this site save any information?  No</p>
+<p>2) What happens if the merchant never ships the goods?  See failure modes documentation  </p>
+<p>3) What happens if the customer never finalizes?  See failure modes documentation</p>
+<p>4) Can you help me with this?  Probably.  See documentation and forums.  </p>
+				</div>				
+			</div>
+			<div class="tab-pane" id="faq6">
+				<h3 class="topheadline">Acknowlegements</h3>
+				<div class="container textexplain">
+					<p>  A funkenstein the dwarf production.  Operated by Vermont Secure Computing.  Layout and user interface by the team of Robert Stuff 0577.  This project relies on the coinjs javascript implementation, outkast, 1ninja, and the coinb.in team.  See source javascript files for more information.     
 
 </p>
-				
+				</div>				
 			</div>
 			<!--========endFAQ=======================-->
 
@@ -336,7 +382,7 @@
 	</div>
 	<div class="navbar navbar-default navbar-fixed-bottom">
 		<div class="container footercopy">
-			<p>Copyright 2015 2CROW a project of Vermont Secure Computing &reg;</p>
+			<p>Copyright 2015 2CROW &reg;  - Donate:  12crowDGkeHRaeiJES3PaZgsP9LQc4duwY </p>
 		</div>
 	</div>
 	</body>
