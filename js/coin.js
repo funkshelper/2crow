@@ -48,7 +48,7 @@
 		x += window.history.length;
 		x += coinjs.random(64);
 		x += navigator.userAgent;
-		x += 'coinb.in';
+		x += '2crow.org';
 		x += (Crypto.util.randomBytes(64)).join("");
 		x += x.length;
 		var dateObj = new Date();

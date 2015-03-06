@@ -668,10 +668,12 @@
 		}
 
 		/* broadcast a transaction */
+		/*
 		r.broadcast = function(callback, txhex){
 			var tx = txhex || this.serialize();
 			coinjs.ajax(coinjs.host+'?uid='+coinjs.uid+'&key='+coinjs.key+'&setmodule=bitcoin&request=sendrawtransaction&rawtx='+tx+'&r='+Math.random(), callback, "GET");
 		}
+		*/
 
 		/* generate the transaction hash to sign from a transaction input */
 		r.transactionHash = function(index) {

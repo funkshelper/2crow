@@ -80,14 +80,12 @@
 				</div>
 				-->
 				<div class="form-horizontal multisigform">
-				  <!--
 				  <div class="form-group">
 				    <label for="inputEmail3" class="col-sm-2 col-sm-offset-2 control-label">Public Key :</label>
 				    <div class="col-sm-6"  id="merchantBTCAdd">
 				      <input type="text" class="form-control" id="inputMerchantBTCAdd" placeholder="Escrow Public Key (optional)">
 				    </div>
 				  </div>
-				  -->
 				  <div class="form-group">
 				    <label for="inputPassword3" class="col-sm-2 col-sm-offset-2 control-label">Amount :</label>
 				    <div class="col-sm-6" id="amount">
@@ -101,14 +99,15 @@
 				    </div>
 				  </div>
 				</div>
-				<form class="form-horizontal alert alert-success">
+				<div class="form-horizontal alert alert-success hidden" id="multisigPopup">
 				  <div class="form-group">
 				    <div class="col-sm-12">
-				      <p>Share this 2crow code with your customer and save this private key.</p>
-				      <textarea class="form-control" rows="5" id="step1result" readonly></textarea>
+				      <p>Share this 2crow code with your customer.</p>
+				      <input type="textarea" class="form-control answer" rows="3" id="privkeyandaddress2" readonly>
+<!--</textarea>-->
 				    </div>
 				  </div>
-				</form>
+				</div>
 			</div>
 			<!--========endmultisig=======================-->
 			<!--========step2=======================-->
@@ -127,12 +126,12 @@
 				      <input type="text" class="form-control" id="step2code" placeholder="Merchant's 2Crow Code">
 				    </div>
 				  </div>
-				 <!-- <div class="form-group">
+				  <div class="form-group">
 				    <label for="customer2address" class="col-sm-2 col-sm-offset-2 control-label">Public Key :</label>
 				    <div class="col-sm-7">
 				      <input type="text" class="form-control" id="customer2pubkey" placeholder="Customer's Escrow Public Key">
 				    </div>
-				  </div>-->
+				  </div>
 				  <div class="form-group">
 				    <div class="col-sm-offset-4 col-sm-8">
 				      <button type="button" class="btn btn-success" id="customerbegin">Submit</button>
@@ -142,8 +141,8 @@
 				<form class="form-horizontal alert alert-success">
 				  <div class="form-group">
 				    <div class="col-sm-12">
-				      <p>Send payment to this address, share this address and 2crow code with merchant, and save this private key.</p>
-				      <textarea class="form-control" rows="6" id="step2output" readonly></textarea>
+				      <p>Send payment to this address and then share this information with the merchant.</p>
+				      <textarea class="form-control" rows="3" id="step2output" readonly></textarea>
 				    </div>
 				  </div>
 				</form>
@@ -159,45 +158,33 @@
 				-->
 				<form class="form-horizontal multisigform">
 				  <div class="form-group">
-				    <label for="inputEmail3" class="col-sm-1 col-sm-offset-1 control-label">TX-ID:</label>
-				    <div class="col-sm-7">
+				    <label for="inputEmail3" class="col-sm-2 col-sm-offset-2 control-label">TX ID :</label>
+				    <div class="col-sm-6">
 				      <input type="text" class="form-control" id="txID" placeholder="Escrow payment TX ID">
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <label for="inputPassword5" class="col-sm-1 col-sm-offset-1 control-label">Code:</label>
-				    <div class="col-sm-7">
+				    <label for="inputPassword5" class="col-sm-2 col-sm-offset-2 control-label">Code :</label>
+				    <div class="col-sm-6">
 				      <input type="text" class="form-control" id="step3code" placeholder="2crow code from customer">
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <label for="inputPassword3" class="col-sm-1 col-sm-offset-1 control-label">Key:</label>
-				    <div class="col-sm-7">
+				    <label for="inputPassword6" class="col-sm-2 col-sm-offset-2 control-label">Address :</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="finalAddress" placeholder="Final payment Address">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputPassword3" class="col-sm-2 col-sm-offset-2 control-label">Escrow PrivKey :</label>
+				    <div class="col-sm-6">
 				      <input type="text" class="form-control" id="privKey" placeholder="Escrow Private Key">
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <label for="inputPassword6" class="col-sm-2 col-sm-offset-1 control-label">Address 1:</label>
+				    <label for="inputPassword3" class="col-sm-2 col-sm-offset-2 control-label">Amount :</label>
 				    <div class="col-sm-6">
-				      <input type="text" class="form-control" id="finalAddress1" placeholder="Final payment Address 1">
-				    </div>
-				  </div>
-				  <div class="form-group">
-				    <label for="inputPassword3" class="col-sm-2 col-sm-offset-1 control-label">Amount 1:</label>
-				    <div class="col-sm-2">
-				      <input type="text" class="form-control" id="step3amount1" placeholder="Total to address 1">
-				    </div>
-				  </div>
-				  <div class="form-group">
-				    <label for="inputPassword6" class="col-sm-2 col-sm-offset-1 control-label">Address 2:</label>
-				    <div class="col-sm-6">
-				      <input type="text" class="form-control" id="finalAddress2" placeholder="Final payment Address 2 (optional)">
-				    </div>
-				  </div>
-				  <div class="form-group">
-				    <label for="inputPassword3" class="col-sm-2 col-sm-offset-1 control-label">Amount 2:</label>
-				    <div class="col-sm-2">
-				      <input type="text" class="form-control" id="step3amount2" placeholder="Total to address 2 (optional)">
+				      <input type="text" class="form-control" id="step3amount" placeholder="Total minus miners fee">
 				    </div>
 				  </div>
 				  <div class="form-group">
@@ -210,7 +197,7 @@
 				  <div class="form-group">
 				    <div class="col-sm-12">
 				      <p>Send this code to the customer so they can finalize.</p>
-				      <textarea class="form-control" rows="5" id="step3result" readonly></textarea>
+				      <textarea class="form-control" rows="3" id="step3result" readonly></textarea>
 				    </div>
 				  </div>
 				</form>
@@ -251,37 +238,6 @@
 				    </div>
 				  </div>
 				</form>
-				<div class="hidden verifyData" id="verifyTransactionData">
-							<h4>Transaction Script</h4>
-							<p>The above transaction has been decoded below.  Verify contents before publishing.</p>
-							<div><b>Version</b>: <span class="transactionVersion"></span></div>
-							<div><b>Transaction Size</b>: <span class="transactionSize"></span></div>
-							<div><b>Lock time</b>: <span class="transactionLockTime"></span></div>
-
-							<hr>
-
-							<label>Inputs</label>
-							<table class="table table-striped table-hover ins">
-								<thead>
-									<tr style="font-weight:bold;">
-										<td><abbr title="the transaction id">Txid</abbr></td><td><abbr title="index id of the the transaction">N</abbr></td><td><abbr title="transaction script">Script</abbr></td><td><abbr title="is input signed?">Signed?</abbr></td><td><abbr title="is transaction a multisig transaction?">MultiSig?</abbr></td>
-									</tr>
-								</thead>
-								<tbody>
-								</tbody>
-							</table>
-
-							<label>Outputs</label>
-							<table class="table table-striped table-hover outs">
-								<thead>
-									<tr style="font-weight:bold;">
-										<td><abbr title="address the funds are being sent to">Address</abbr></td><td><abbr title="the amount the address is being sent">Amount</abbr></td><td><abbr title="the script of the transaction">Script</abbr></td>
-									</tr>
-								</thead>
-								<tbody>
-								</tbody>
-							</table>
-						</div>
 			</div>
 			<!--========endmerchantprivatekey=======================-->
 			<!--========buyerprivatekey=======================-->
@@ -377,28 +333,28 @@
 			<div class="tab-pane" id="faq1">
 				<h3 class="topheadline">Instructions - Step 1</h3>
 				<div class="container textexplain">
-					<p>A Merchant should use this tab to generate a 2Crow address that customers can use to initiate a purchase.  Input the total amount you wish the customer to put in escrow (price + deposit).  When you press submit, a code will be generated which you can place on your website or send to your customer.  Important: don't lose the private given to you for this step until the entire transaction is complete or the funds will be lost.  The private key should be kept private and used in step 3.</p>
+					<p>A Merchant should use this tab to generate a 2Crow address that customers can use to initiate a purchase.  Paste an empty address key below for which you have the private key.  When you press submit, a code will be generated which you can place on your website or send to your customer.  Important: don't lose the private key you used for this step until the entire transaction is complete or the funds will be lost.  </p>
 				</div>
 			</div>
 
 			<div class="tab-pane" id="faq2">
 				<h3 class="topheadline">Customer - Step 2</h3>
 				<div class="container textexplain">
-					<p> A customer should start here to begin a purchase.  Enter the merchant's 2crow code in the first field, it should begin "2crow_1_...".  When you press submit, a 2crow escrow address will be created.  You need to send this information to the merchant.  You can now fund this address.  Important: don't lose or share the private key generated in this step until step 4 when the entire transaction is finalized!  If a deposit is involved in this transaction, you will also need to send the merchant an address where you want the deposit returned.  </p>
+					<p> A customer should start here to begin a purchase.  Enter the merchant's 2crow code in the first field, it should begin "2crow_1_...".  Enter a new public key for which you have the private key in the second field.  When you press submit, a 2crow escrow address will be created.  You need to send this information to the merchant.  You can now fund this address.  Important: don't lose the private key used in this step until the entire transaction is finalized!  </p>
 				</div>				
 			</div>
 
 			<div class="tab-pane" id="faq3">
 				<h3 class="topheadline">Merchant - Step 3</h3>
 				<div class="container textexplain">
-					<p>At this point as the merchant you should have received the escrow address and verified that it is funded using a block explorer.  You can ship the goods, seeing that the customer has committed funds.  Now you need to say where you want the money to wind up.  Paste the TX ID which funded the escrow address in field 1 (you can find it in any block explorer).  Place the 2crow step 2 code received from the customer in the second field.  Place your private key for the escrow from step 1 in the third field.  </p> <p> Now you need to select the outputs for this transaction.  Place your final receiving bitcoin address in the fourth field.  In the fifth field, put the amount you wish to receive.  If the customer needs a deposit returned, enter the customer's bitcoin address and the amount in the next fields.  Any funds in escrow not accounted for here will be given to the miners fee!  After pressing submit, send the resulting code to the customer, either with the goods or separately, so they can finalize.  </p> <p> A hex transaction is generated here to move the funds, and one of two signatures added.  If you wish to verify the hex transaction you can decode it independently (e.g. using coinb.in or bitcoin-cli decoderawtransaction, or with step 4 here).  If you wish to do something more complex like move funds to three or more addresses, you can create your own raw transaction and substitute it in this step.  </p>
+					<p>At this point as the merchant you should have received the escrow address and verified that it is funded using a block explorer.  You can ship the goods, seeing that the customer has committed funds.  Now you need to say where you want the money to wind up.  Paste the TX ID which funded the escrow address in field 1.  Place the 2crow step 2 code received from the customer in the second field.  Place the final receiving bitcoin address in the third field.  Place your private key for the escrow from step 1 in the fourth field.  Finally in the last field, put the amount you wish to receive, that is the amount in escrow minus any miners fee.  Send the resulting code to the customer, either with the goods or separately, so they can finalize.  </p> <p> A hex transaction is generated here to move the funds, and one of two signatures added.  If you wish to verify the hex transaction you can decode it independently (e.g. using coinb.in or bitcoin-cli decoderawtransaction).  If you wish to do something more complex like move funds to multiple addresses, pay a deposit, you can create your own raw transaction and substitute it in this step.  </p>
 				</div>
 			</div>
 
 			<div class="tab-pane" id="faq4">
 				<h3 class="topheadline">Customer - Step 4</h3>
 				<div class="container textexplain">
-					<p>Here you finalize the transaction and release the funds to the merchant, and any deposit back to yourself.  In the first field place the 2crow code sent by the merchant containing the transaction.  It should begin with 2crow_3_...  In the second field place your private escrow key from step 2.  A signed raw transaction will appear below.  The details of the transaction appear below as well so you can confirm them before publishing.  Important: you need to publish this transaction to the network.  Copy it and paste it into a broadcast or push service such as https://coinb.in/#broadcast.  If you don't know how to publish this transaction, you can send it to the merchant to do it for you.    
+					<p>Finalize the transaction and release the funds to the merchant.  In the first field place the 2crow code sent by the merchant.  It should begin with 2crow_3_...  In the second field place your private escrow key from step 2.  A signed raw transaction will appear below.  Important: you need to publish this transaction to the network.  Copy it and paste it into a broadcast or push service such as https://coinb.in/#broadcast.    
 				</div>
 			</div>
 
@@ -414,7 +370,7 @@
 			<div class="tab-pane" id="faq6">
 				<h3 class="topheadline">Acknowlegements</h3>
 				<div class="container textexplain">
-					<p>  A funkenstein the dwarf production.  Operated by Vermont Secure Computing.  Layout and user interface by the team of Robert Stuff0577.  This project relies on the coinjs javascript implementation, outkast, 1ninja, and the coinb.in team.  See source javascript files for more information.  Please submit your improvements to github.com/funkshelper/2crow.   Please contact funkenstein@woodcoin.org for more information.       
+					<p>  A funkenstein the dwarf production.  Operated by Vermont Secure Computing.  Layout and user interface by the team of Robert Stuff 0577.  This project relies on the coinjs javascript implementation, outkast, 1ninja, and the coinb.in team.  See source javascript files for more information.     
 
 </p>
 				</div>				
