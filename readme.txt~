@@ -25,7 +25,7 @@ escrow address controlled by both customer and merchant.  The new flow:
         giving the merchant the address and a new 2crow code.
 
      3) Merchant checks funds are sent, ships, and prepares a TX
-        for the customer to finalize, as a new 2crow code.
+        sending it to customer for finalizing as a new 2crow code.
 
      4) Customer receives goods and then signs the finalizing TX.
         Funds are now moved from the 2crow escrow to merchant's 
@@ -46,8 +46,7 @@ The customer commits their funds in step 2.  However if the customer
 disappears before finalizing step 4, all funds are lost.  Nobody can touch them 
 unless both parties agree.  The customer has no financial incentive not 
 to finalize if the goods are shipped.  However, an addition of a customer 
-deposit could help eliminate this failure mode if you are worried about 
-this failure mode.       
+deposit could help eliminate this failure mode.       
 
 3) Escrow compromised
 
@@ -73,7 +72,7 @@ finalizing has occured.
 
 With the exception of the "merchant keeps funds and doesn't ship" failure,
 2crow transactions are susceptibe to most all of the other failure modes 
-of normal commerce, such as lightning strike, extortion, robbery, etc. 
+of normal commerce, such as 
 
 
 
